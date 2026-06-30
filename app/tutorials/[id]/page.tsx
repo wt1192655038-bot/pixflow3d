@@ -3,6 +3,7 @@ import { ButtonLink } from "@/components/ButtonLink";
 import { getTutorialById } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
+export const runtime = "edge";
 
 type TutorialDetailPageProps = {
   params: Promise<{
@@ -14,7 +15,7 @@ export default async function TutorialDetailPage({
   params
 }: TutorialDetailPageProps) {
   const { id } = await params;
-  const tutorial = getTutorialById(id);
+  const tutorial = await getTutorialById(id);
 
   if (!tutorial) {
     notFound();
