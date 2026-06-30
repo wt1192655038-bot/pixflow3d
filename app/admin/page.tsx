@@ -14,6 +14,7 @@ import {
 } from "./actions";
 
 export const dynamic = "force-dynamic";
+export const runtime = "edge";
 
 type AdminPageProps = {
   searchParams: Promise<{
@@ -119,7 +120,7 @@ async function LoginForm({ hasError }: { hasError: boolean }) {
 export default async function AdminPage({ searchParams }: AdminPageProps) {
   const params = await searchParams;
   const cookieStore = await cookies();
-  const isLoggedIn = isValidAdminSession(
+  const isLoggedIn = await isValidAdminSession(
     cookieStore.get(ADMIN_COOKIE)?.value
   );
 
@@ -127,8 +128,8 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
     return <LoginForm hasError={params.error === "1"} />;
   }
 
-  const tutorials = getTutorials();
-  const files = getFiles();
+  const tutorials = await getTutorials();
+  const files = await getFiles();
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
