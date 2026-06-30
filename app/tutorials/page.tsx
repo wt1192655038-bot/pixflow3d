@@ -2,9 +2,10 @@ import { TutorialCard } from "@/components/TutorialCard";
 import { getTutorials } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
+export const runtime = "edge";
 
-export default function TutorialsPage() {
-  const tutorials = getTutorials();
+export default async function TutorialsPage() {
+  const tutorials = await getTutorials();
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
