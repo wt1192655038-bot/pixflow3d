@@ -21,7 +21,7 @@ async function requireAdmin() {
   const cookieStore = await cookies();
   const session = cookieStore.get(ADMIN_COOKIE)?.value;
 
-  if (!isValidAdminSession(session)) {
+  if (!(await isValidAdminSession(session))) {
     redirect("/admin");
   }
 }
@@ -55,7 +55,7 @@ export async function loginAction(formData: FormData) {
   }
 
   const cookieStore = await cookies();
-  cookieStore.set(ADMIN_COOKIE, getAdminSessionValue(), {
+  cookieStore.set(ADMIN_COOKIE, await getAdminSessionValue(), {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
