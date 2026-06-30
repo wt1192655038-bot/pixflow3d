@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Fluid simulation thumbnail">
+  <rect width="1200" height="675" fill="#08111f"/>
+  <path d="M0 442c95-45 179-47 252-7 100 55 193 50 279-15 106-80 224-82 355-7 91 52 196 59 314 22v240H0z" fill="#0ea5e9"/>
+  <path d="M0 512c125-51 237-49 336 6 108 60 217 57 328-10 128-78 257-78 388 0 48 28 97 46 148 54v113H0z" fill="#38bdf8" opacity=".9"/>
+  <g fill="#e0f2fe">
+    <circle cx="403" cy="221" r="30"/>
+    <circle cx="483" cy="179" r="18"/>
+    <circle cx="772" cy="199" r="34"/>
+    <circle cx="840" cy="140" r="16"/>
+    <circle cx="920" cy="238" r="22"/>
+  </g>
+  <text x="72" y="572" fill="#f8fafc" font-family="Arial, sans-serif" font-size="56" font-weight="700">Fluid Splash</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Fog simulation thumbnail">
+  <rect width="1200" height="675" fill="#0b1220"/>
+  <path d="M0 455c138-69 266-67 384 6s265 77 441 13c149-54 274-54 375 0v201H0z" fill="#1e3a8a" opacity=".62"/>
+  <path d="M0 332c119-51 231-49 337 7s220 56 343 0 254-58 393-6c49 18 91 40 127 64v278H0z" fill="#38bdf8" opacity=".22"/>
+  <g fill="#e0f2fe" opacity=".78">
+    <circle cx="190" cy="263" r="72"/>
+    <circle cx="281" cy="240" r="104"/>
+    <circle cx="400" cy="267" r="82"/>
+    <circle cx="778" cy="211" r="92"/>
+    <circle cx="893" cy="229" r="118"/>
+    <circle cx="1019" cy="261" r="73"/>
+  </g>
+  <text x="72" y="572" fill="#f8fafc" font-family="Arial, sans-serif" font-size="56" font-weight="700">Volume Fog</text>
+</svg>
