@@ -3,9 +3,10 @@ import { TutorialCard } from "@/components/TutorialCard";
 import { getLatestTutorials } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
+export const runtime = "edge";
 
-export default function HomePage() {
-  const tutorials = getLatestTutorials(3);
+export default async function HomePage() {
+  const tutorials = await getLatestTutorials(3);
 
   return (
     <div>
