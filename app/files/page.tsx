@@ -2,9 +2,10 @@ import { ButtonLink } from "@/components/ButtonLink";
 import { getFiles } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
+export const runtime = "edge";
 
-export default function FilesPage() {
-  const files = getFiles();
+export default async function FilesPage() {
+  const files = await getFiles();
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
