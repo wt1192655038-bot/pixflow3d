@@ -2,3 +2,7 @@ name = "pixflow3d"
 pages_build_output_dir = ".vercel/output/static"
 compatibility_date = "2026-06-30"
 compatibility_flags = ["nodejs_compat"]
+
+[[kv_namespaces]]
+binding = "CONTENT_KV"
+id = "2f47b7d4d9ee47a6a0f3bd9fa86efce9"
