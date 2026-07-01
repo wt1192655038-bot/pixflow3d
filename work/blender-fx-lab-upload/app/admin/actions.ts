@@ -9,11 +9,11 @@ import {
   isValidAdminSession
 } from "@/lib/admin";
 import {
-  appendDownloadResource,
+  appendFileResource,
   appendTutorial,
-  deleteDownloadResource,
+  deleteFileResource,
   deleteTutorial,
-  updateDownloadResource,
+  updateFileResource,
   updateTutorial
 } from "@/lib/json-storage";
 
@@ -21,7 +21,7 @@ async function requireAdmin() {
   const cookieStore = await cookies();
   const session = cookieStore.get(ADMIN_COOKIE)?.value;
 
-  if (!(await isValidAdminSession(session))) {
+  if (!isValidAdminSession(session)) {
     redirect("/admin");
   }
 }
@@ -46,10 +46,6 @@ function requiredNumber(formData: FormData, key: string) {
   return value;
 }
 
-function optionalString(formData: FormData, key: string) {
-  return String(formData.get(key) ?? "").trim();
-}
-
 export async function loginAction(formData: FormData) {
   const password = String(formData.get("password") ?? "");
   const expectedPassword = process.env.ADMIN_PASSWORD;
@@ -59,7 +55,7 @@ export async function loginAction(formData: FormData) {
   }
 
   const cookieStore = await cookies();
-  cookieStore.set(ADMIN_COOKIE, await getAdminSessionValue(), {
+  cookieStore.set(ADMIN_COOKIE, getAdminSessionValue(), {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
@@ -96,24 +92,16 @@ export async function addTutorialAction(formData: FormData) {
 export async function addFileAction(formData: FormData) {
   await requireAdmin();
 
-  await appendDownloadResource({
-    title: requiredString(formData, "title"),
-    description: requiredString(formData, "description"),
-    download_url: requiredString(formData, "download_url"),
-    file_size: requiredString(formData, "file_size"),
-    video_url: optionalString(formData, "video_url"),
-    bvid: optionalString(formData, "bvid"),
-    cover_url: optionalString(formData, "cover_url")
+  await appendFileResource({
+    name: requiredString(formData, "name"),
+    type: requiredString(formData, "type"),
+    size: requiredString(formData, "size"),
+    url: requiredString(formData, "url")
   });
 
-  revalidatePath("/");
   revalidatePath("/files");
   revalidatePath("/admin");
   redirect("/admin?success=file");
-}
-
-export async function addDownloadResourceAction(formData: FormData) {
-  await addFileAction(formData);
 }
 
 export async function updateTutorialAction(formData: FormData) {
@@ -151,37 +139,24 @@ export async function deleteTutorialAction(formData: FormData) {
 export async function updateFileAction(formData: FormData) {
   await requireAdmin();
 
-  await updateDownloadResource(requiredString(formData, "id"), {
-    title: requiredString(formData, "title"),
-    description: requiredString(formData, "description"),
-    download_url: requiredString(formData, "download_url"),
-    file_size: requiredString(formData, "file_size"),
-    video_url: optionalString(formData, "video_url"),
-    bvid: optionalString(formData, "bvid"),
-    cover_url: optionalString(formData, "cover_url")
+  await updateFileResource(requiredNumber(formData, "index"), {
+    name: requiredString(formData, "name"),
+    type: requiredString(formData, "type"),
+    size: requiredString(formData, "size"),
+    url: requiredString(formData, "url")
   });
 
-  revalidatePath("/");
   revalidatePath("/files");
   revalidatePath("/admin");
   redirect("/admin?success=updated-file");
 }
 
-export async function updateDownloadResourceAction(formData: FormData) {
-  await updateFileAction(formData);
-}
-
 export async function deleteFileAction(formData: FormData) {
   await requireAdmin();
 
-  await deleteDownloadResource(requiredString(formData, "id"));
+  await deleteFileResource(requiredNumber(formData, "index"));
 
-  revalidatePath("/");
   revalidatePath("/files");
   revalidatePath("/admin");
   redirect("/admin?success=deleted-file");
-}
-
-export async function deleteDownloadResourceAction(formData: FormData) {
-  await deleteFileAction(formData);
 }

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Blender 雾效教程",
+    "desc": "体积雾基础制作，学习如何用体积材质和灯光做出干净的影视感雾效。",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "thumbnailUrl": "/images/fog.svg",
+    "r2FileUrl": "https://r2.example.com/fog.blend"
+  },
+  {
+    "id": 2,
+    "title": "Blender 火焰模拟入门",
+    "desc": "从域、发射源到缓存设置，快速完成一个可渲染的火焰特效镜头。",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "thumbnailUrl": "/images/fire.svg",
+    "r2FileUrl": "https://r2.example.com/fire.zip"
+  },
+  {
+    "id": 3,
+    "title": "Blender 流体飞溅效果",
+    "desc": "制作水花飞溅与慢动作液体运动，适合作为产品动画或短片特效。",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "thumbnailUrl": "/images/fluid.svg",
+    "r2FileUrl": "https://r2.example.com/fluid.zip"
+  }
+]

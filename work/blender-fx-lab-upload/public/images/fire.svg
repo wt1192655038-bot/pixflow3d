@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Fire simulation thumbnail">
+  <rect width="1200" height="675" fill="#0b1020"/>
+  <path d="M598 585c-145-88-190-207-135-357 46 69 92 83 137 42 65-58 46-141 4-219 174 109 268 248 282 417-55 76-151 115-288 117z" fill="#f97316"/>
+  <path d="M594 586c-87-63-112-145-76-246 29 47 61 57 96 30 45-36 39-93 6-160 105 79 164 176 177 291-38 55-106 84-203 85z" fill="#facc15"/>
+  <path d="M250 580h700" stroke="#38bdf8" stroke-width="18" stroke-linecap="round" opacity=".55"/>
+  <text x="72" y="572" fill="#f8fafc" font-family="Arial, sans-serif" font-size="56" font-weight="700">Fire FX</text>
+</svg>

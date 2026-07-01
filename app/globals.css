@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 * {
@@ -16,6 +16,146 @@ html {
 
 body {
   min-height: 100vh;
-  background: #080b12;
-  color: #e2e8f0;
+  background:
+    radial-gradient(circle at 78% 28%, rgba(99, 224, 255, 0.22), transparent 32%),
+    radial-gradient(circle at 88% 68%, rgba(151, 120, 255, 0.2), transparent 34%),
+    linear-gradient(135deg, #f8fbff 0%, #eef7ff 42%, #f6f2ff 100%);
+  color: #10213f;
+}
+
+.pixflow-home {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.86), transparent 25%),
+    radial-gradient(circle at 24% 42%, rgba(214, 241, 255, 0.75), transparent 30%),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.92), rgba(231, 246, 255, 0.72) 46%, rgba(246, 240, 255, 0.72));
+}
+
+.hero-section {
+  border-radius: 0;
+}
+
+.hero-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  background:
+    linear-gradient(90deg, rgba(248, 251, 255, 0.78), rgba(248, 251, 255, 0.26) 45%, rgba(248, 251, 255, 0.03) 100%),
+    linear-gradient(180deg, rgba(248, 251, 255, 0.14), rgba(248, 251, 255, 0.32));
+  pointer-events: none;
+}
+
+.preview-window {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.85rem;
+  background: #eef6ff;
+  box-shadow: none;
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+.group:hover .preview-window {
+  transform: translateY(-2px);
+  filter: saturate(1.05);
+}
+
+.preview-window::before,
+.preview-window::after {
+  position: absolute;
+  content: "";
+}
+
+.preview-fire {
+  background:
+    radial-gradient(circle at 28% 76%, #ffd38a 0 7%, transparent 18%),
+    radial-gradient(circle at 48% 78%, #ff7f35 0 12%, transparent 24%),
+    radial-gradient(circle at 65% 72%, #ff3d22 0 11%, transparent 24%),
+    linear-gradient(180deg, #150d12, #21151d 62%, #0c0b12);
+}
+
+.preview-fire::before {
+  inset: 28% 18% 4% 20%;
+  background: linear-gradient(140deg, transparent 8%, rgba(255, 183, 84, 0.94) 30%, rgba(255, 75, 26, 0.85) 58%, transparent 78%);
+  filter: blur(3px);
+}
+
+.preview-fog {
+  background:
+    linear-gradient(160deg, rgba(14, 48, 72, 0.5), transparent 48%),
+    radial-gradient(circle at 38% 58%, rgba(255, 255, 255, 0.86), transparent 34%),
+    linear-gradient(180deg, #9bb5c7, #e8f0f7 46%, #6a8494);
+}
+
+.preview-fog::before {
+  left: -5%;
+  right: -5%;
+  bottom: 8%;
+  height: 42%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.82), transparent);
+  filter: blur(8px);
+}
+
+.preview-fracture {
+  background:
+    radial-gradient(circle at 54% 48%, rgba(214, 241, 255, 0.9), transparent 30%),
+    linear-gradient(135deg, #0b1832, #1b3f69 54%, #07101e);
+}
+
+.preview-fracture::before {
+  inset: 18% 16%;
+  background:
+    linear-gradient(48deg, transparent 46%, rgba(255, 255, 255, 0.88) 47% 49%, transparent 50%),
+    linear-gradient(-28deg, transparent 45%, rgba(172, 227, 255, 0.82) 46% 48%, transparent 49%),
+    linear-gradient(112deg, transparent 48%, rgba(255, 255, 255, 0.65) 49% 51%, transparent 52%);
+}
+
+.preview-light {
+  background:
+    linear-gradient(104deg, transparent 0 30%, rgba(255, 255, 255, 0.7) 38%, transparent 52%),
+    linear-gradient(126deg, transparent 0 40%, rgba(198, 231, 255, 0.82) 48%, transparent 65%),
+    linear-gradient(180deg, #17304a, #4d6682 58%, #112b3c);
+}
+
+.preview-thruster {
+  background:
+    radial-gradient(circle at 68% 60%, #fff2bd 0 6%, #ff7e42 15%, transparent 30%),
+    radial-gradient(circle at 82% 68%, rgba(255, 108, 58, 0.78), transparent 24%),
+    linear-gradient(135deg, #0d1328, #36385f 56%, #241026);
+}
+
+.preview-thruster::before {
+  left: 13%;
+  top: 24%;
+  width: 40%;
+  height: 46%;
+  border-radius: 9999px;
+  border: 10px solid rgba(104, 126, 174, 0.72);
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.35);
+}
+
+.preview-particles {
+  background:
+    radial-gradient(circle at 80% 22%, rgba(181, 92, 255, 0.86), transparent 20%),
+    radial-gradient(circle at 23% 68%, rgba(18, 218, 231, 0.7), transparent 24%),
+    linear-gradient(135deg, #061836, #10265a 54%, #1f0f3d);
+}
+
+.preview-particles::before {
+  inset: 26% 10%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent, rgba(18, 209, 232, 0.9), rgba(120, 103, 255, 0.88), transparent);
+  filter: blur(5px);
+  transform: rotate(12deg);
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    border-radius: 0;
+  }
+
+  .hero-section > img {
+    object-position: 62% center;
+  }
 }
