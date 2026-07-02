@@ -1,38 +1,11 @@
-import { getDownloadCoverUrl, getFiles } from "@/lib/data";
-
-const previewClasses = [
-  "preview-fire",
-  "preview-fog",
-  "preview-fracture",
-  "preview-light",
-  "preview-thruster",
-  "preview-particles"
-];
+import { ResourceFilterSection } from "@/components/ResourceFilterSection";
+import { getFiles } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
 export const runtime = "edge";
 
-function DownloadIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-    >
-      <path d="M12 3v11" />
-      <path d="m7 10 5 5 5-5" />
-      <path d="M5 19h14" />
-    </svg>
-  );
-}
-
 export default async function HomePage() {
-  const fileCards = (await getFiles()).slice(0, 6);
+  const fileCards = await getFiles();
 
   return (
     <div className="pixflow-home min-h-screen overflow-hidden">
@@ -63,57 +36,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto mt-[50px] max-w-7xl px-5 pb-12 sm:px-8 lg:pb-16">
-        <div className="grid gap-x-8 gap-y-10 md:grid-cols-2 xl:grid-cols-3">
-          {fileCards.map((file, index) => {
-            const coverUrl = getDownloadCoverUrl(file);
-
-            return (
-            <article
-              key={file.id}
-              className="group"
-            >
-              <a
-                href={`/resources/${file.id}`}
-                aria-label={`查看 ${file.title} 视频播放页`}
-                className="block"
-              >
-                <div className={`preview-window aspect-[4/3] ${coverUrl ? "" : previewClasses[index % previewClasses.length]}`}>
-                  {coverUrl ? (
-                    <img
-                      src={coverUrl}
-                      alt={file.title}
-                      className="h-full w-full object-cover"
-                    />
-                  ) : null}
-                </div>
-              </a>
-              <div className="mt-3 flex items-center justify-between gap-4">
-                <div>
-                  <a href={`/resources/${file.id}`}>
-                    <h2 className="text-sm font-semibold text-[#1f2d48] transition hover:text-[#0e99be]">
-                      {file.title}
-                    </h2>
-                  </a>
-                  <p className="mt-1 text-xs font-medium text-[#8a96aa]">
-                    {file.file_size}
-                  </p>
-                </div>
-                <a
-                  href={file.download_url}
-                  className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-[#14b8d4] bg-white/80 px-3 py-1.5 text-xs font-semibold text-[#0e99be] transition hover:bg-cyan-50"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <DownloadIcon />
-                  下载
-                </a>
-              </div>
-            </article>
-          );
-          })}
-        </div>
-      </section>
+      <ResourceFilterSection files={fileCards} />
     </div>
   );
 }

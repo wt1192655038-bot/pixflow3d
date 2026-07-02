@@ -20,6 +20,7 @@ export type DownloadFile = {
   cover_url?: string;
   created_at: string;
   file_size: string;
+  tags: string[];
   name: string;
   type: string;
   size: string;
@@ -113,6 +114,9 @@ function normalizeDownloadFile(
   const downloadUrl = String(file.download_url ?? file.url ?? "#");
   const fileSize = String(file.file_size ?? file.size ?? "未知大小");
   const createdAt = String(file.created_at ?? new Date(0).toISOString());
+  const tags = Array.isArray(file.tags)
+    ? file.tags.map((tag) => String(tag)).filter(Boolean)
+    : [];
 
   return {
     id,
@@ -124,6 +128,7 @@ function normalizeDownloadFile(
     cover_url: file.cover_url ? String(file.cover_url) : "",
     created_at: createdAt,
     file_size: fileSize,
+    tags,
     name: String(file.name ?? title),
     type: String(file.type ?? ""),
     size: String(file.size ?? fileSize),

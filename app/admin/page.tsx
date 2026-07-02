@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import type { ReactNode } from "react";
+import { AdminTagSelector } from "@/components/AdminTagSelector";
 import { ADMIN_COOKIE, isValidAdminSession } from "@/lib/admin";
 import { getDownloadCoverUrl, getFiles, type DownloadFile } from "@/lib/data";
 import {
@@ -202,6 +203,7 @@ function ResourceForm({
         required={false}
         defaultValue={resource?.cover_url}
       />
+      <AdminTagSelector selectedTags={resource?.tags} />
       <SubmitButton>{submitText}</SubmitButton>
     </form>
   );

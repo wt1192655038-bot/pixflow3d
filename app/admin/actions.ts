@@ -50,6 +50,13 @@ function optionalString(formData: FormData, key: string) {
   return String(formData.get(key) ?? "").trim();
 }
 
+function selectedTags(formData: FormData) {
+  return formData
+    .getAll("tags")
+    .map((tag) => String(tag).trim())
+    .filter(Boolean);
+}
+
 export async function loginAction(formData: FormData) {
   const password = String(formData.get("password") ?? "");
   const expectedPassword = process.env.ADMIN_PASSWORD;
@@ -103,7 +110,8 @@ export async function addFileAction(formData: FormData) {
     file_size: requiredString(formData, "file_size"),
     video_url: optionalString(formData, "video_url"),
     bvid: optionalString(formData, "bvid"),
-    cover_url: optionalString(formData, "cover_url")
+    cover_url: optionalString(formData, "cover_url"),
+    tags: selectedTags(formData)
   });
 
   revalidatePath("/");
@@ -158,7 +166,8 @@ export async function updateFileAction(formData: FormData) {
     file_size: requiredString(formData, "file_size"),
     video_url: optionalString(formData, "video_url"),
     bvid: optionalString(formData, "bvid"),
-    cover_url: optionalString(formData, "cover_url")
+    cover_url: optionalString(formData, "cover_url"),
+    tags: selectedTags(formData)
   });
 
   revalidatePath("/");

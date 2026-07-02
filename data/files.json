@@ -3,18 +3,21 @@
     "name": "雾效工程文件",
     "type": ".blend",
     "size": "120MB",
-    "url": "https://r2.example.com/fog.blend"
+    "url": "https://r2.example.com/fog.blend",
+    "tags": ["烟雾", "Blender", "体积", "光影"]
   },
   {
     "name": "火焰模拟工程包",
     "type": ".zip",
     "size": "260MB",
-    "url": "https://r2.example.com/fire.zip"
+    "url": "https://r2.example.com/fire.zip",
+    "tags": ["火焰", "Blender", "物理模拟"]
   },
   {
     "name": "流体飞溅工程包",
     "type": ".zip",
     "size": "340MB",
-    "url": "https://r2.example.com/fluid.zip"
+    "url": "https://r2.example.com/fluid.zip",
+    "tags": ["流体", "粒子", "物理模拟"]
   }
 ]

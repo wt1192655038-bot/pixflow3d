@@ -6,6 +6,13 @@ import {
   type Tutorial
 } from "@/lib/data";
 
+type DownloadResourceInput = Omit<
+  DownloadFile,
+  "id" | "created_at" | "name" | "type" | "size" | "url" | "tags"
+> & {
+  tags?: string[];
+};
+
 export async function appendTutorial(input: Omit<Tutorial, "id">) {
   const tutorials = await getTutorials();
   const nextId =
@@ -27,9 +34,7 @@ export async function appendFileResource(input: DownloadFile) {
   await writeCollection("files", files);
 }
 
-export async function appendDownloadResource(
-  input: Omit<DownloadFile, "id" | "created_at" | "name" | "type" | "size" | "url">
-) {
+export async function appendDownloadResource(input: DownloadResourceInput) {
   const files = await getFiles();
   const nextId = createResourceId();
 
@@ -37,6 +42,7 @@ export async function appendDownloadResource(
     id: nextId,
     created_at: new Date().toISOString(),
     ...input,
+    tags: input.tags ?? [],
     name: input.title,
     type: "",
     size: input.file_size,
@@ -76,7 +82,7 @@ export async function updateFileResource(index: number, input: DownloadFile) {
 
 export async function updateDownloadResource(
   id: string,
-  input: Omit<DownloadFile, "id" | "created_at" | "name" | "type" | "size" | "url">
+  input: DownloadResourceInput
 ) {
   const files = await getFiles();
   const updatedFiles = files.map((file) =>
